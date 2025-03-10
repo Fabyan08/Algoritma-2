@@ -4,7 +4,6 @@ def buat_menu(data):
     menu = {}
     for id, parent, label in data:
         menu[id] = {'label': label, 'children': []}
-    
     hasil = []
     for id, parent, _ in data:
         if parent == 0:
@@ -12,12 +11,11 @@ def buat_menu(data):
         else:
             menu[parent]['children'].append(menu[id])
     return hasil
-
+# function cetak_menu
 def cetak_menu(menu, indent=0):
     for item in menu:
         print(" " * indent + item['label'])
         cetak_menu(item['children'], indent + 4)
-
 n = int(input("Jumlah menu: "))
 data = []
 
@@ -26,7 +24,7 @@ for _ in range(n):
     parent = int(input("Parent: "))
     label = input("Label: ")
     data.append((id, parent, label))
-
+# Untuk struktur menu
 print("\nStruktur Menu:")
 cetak_menu(buat_menu(data))
 
